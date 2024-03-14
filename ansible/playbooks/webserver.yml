@@ -1,0 +1,20 @@
+- name: Deploy HTML content
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Copy HTML file to web server
+      copy:
+        src: src/index.html
+        dest: /var/www/html/index.html
+
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
