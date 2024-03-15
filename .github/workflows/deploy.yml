@@ -17,7 +17,7 @@ jobs:
       - name: Lint Ansible Playbook
         uses: ansible/ansible-lint-action@main
         with:
-          targets: "ansible/playbooks"
+          path: "ansible/playbooks"
           
   deploy:
     needs: build
