@@ -21,13 +21,12 @@ jobs:
           
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Run Ansible playbook
-        uses: actions/ansible-cli-action@latest
+        uses: ansible/ansible-runner-github-action@v1
         with:
-          command: "ansible-playbook"
-          playbook: ansible/playbooks/webserver.yml  # Corrected playbook path
+          playbook: ansible/playbooks/webserver.yml
           inventory: ansible/inventory.ini
