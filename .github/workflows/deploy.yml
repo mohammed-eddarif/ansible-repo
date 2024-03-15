@@ -17,7 +17,7 @@ jobs:
       - name: Lint Ansible Playbook
         uses: ansible/ansible-lint-action@main
         with:
-          path: "ansible/playbooks"
+          path: ansible/playbooks  # Corrected 'path' instead of 'targets'
           
   deploy:
     needs: build
@@ -28,5 +28,5 @@ jobs:
       - name: Run Ansible playbook
         uses: appleboy/ansible-action@v2
         with:
-          playbook: ansible/playbooks/deploy.yml
+          playbook: ansible/playbooks/webserver.yml  # Corrected playbook path
           inventory: ansible/inventory.ini
